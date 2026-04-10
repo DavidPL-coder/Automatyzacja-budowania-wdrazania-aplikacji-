@@ -1,0 +1,22 @@
+docker network create app-network # jeśli wcześniej sieć app-network nie była utworzona
+
+docker build -t dawidd288556/backend:v1 ./backend
+docker tag dawidd288556/backend:v1 dawidd288556/backend:latest
+docker push dawidd288556/backend:v1
+docker push dawidd288556/backend:latest
+
+docker build -t dawidd288556/frontend:v1 ./frontend
+docker tag dawidd288556/frontend:v1 dawidd288556/frontend:latest
+docker push dawidd288556/frontend:v1
+docker push dawidd288556/frontend:latest
+
+docker rmi dawidd288556/backend:v1
+docker rmi dawidd288556/backend:latest
+docker rmi dawidd288556/frontend:v1
+docker rmi dawidd288556/frontend:latest
+
+docker pull dawidd288556/backend:latest # albo dawidd288556/backend:v1
+docker pull dawidd288556/frontend:latest
+
+docker run -d --name backend-3-2-1 --network app-network dawidd288556/backend:latest
+docker run -d --name frontend-3-2-1 --network app-network -p 80:80 dawidd288556/frontend:latest

@@ -1,0 +1,11 @@
+docker network create app-network # jeśli nie było wcześniej zrobione
+
+docker run -d --name api-a --network app-network -e INSTANCE_ID=api-a dawidd288556/backend:v1
+docker run -d --name api-b --network app-network -e INSTANCE_ID=api-b dawidd288556/backend:v1
+
+docker build -t dawidd288556/frontend:v2 ./frontend
+docker tag dawidd288556/frontend:v2 dawidd288556/frontend:latest
+docker push dawidd288556/frontend:v2
+docker push dawidd288556/frontend:latest
+
+docker run -d --name frontend-3-2-2 --network app-network -p 80:80 dawidd288556/frontend:v2

@@ -1,0 +1,17 @@
+C:\Users\Laptop1\Desktop\studia\devops\4.2.2> docker images
+                                                                                                                                i Info →   U  In Use
+IMAGE                          ID             DISK USAGE   CONTENT SIZE   EXTRA
+chrislusf/seaweedfs:latest     203e6f6f5a59        312MB           89MB    U   
+dawidd288556/backend:latest    da6a2e21149c        199MB         49.1MB        
+dawidd288556/backend:v1        599b04c914ff        197MB         47.4MB        
+dawidd288556/backend:v2        93013b5cba24        205MB         49.4MB        
+dawidd288556/frontend:latest   97cb6f6ba660       92.7MB           26MB        
+dawidd288556/frontend:v1       dcddbe3ee819       92.7MB           26MB        
+dawidd288556/frontend:v2       85d4bec87e51       92.7MB           26MB        
+dawidd288556/frontend:v3       97cb6f6ba660       92.7MB           26MB        
+httpd:alpine                   8f26f33a7002       97.8MB         22.1MB        
+node:20                        8789e1e0752d       1.59GB          415MB        
+node:20-alpine                 f598378b5240        194MB         48.8MB        
+python:3.11-slim               d6e4d224f70f        188MB         47.7MB        
+redis:alpine                   2afba59292f2        134MB         34.9MB        
+rlutowsk/jupyter-gap:latest    ed1d869d4273       1.46GB          450MB    U  
