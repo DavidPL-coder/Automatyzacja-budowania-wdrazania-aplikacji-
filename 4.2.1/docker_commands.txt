@@ -1,12 +1,12 @@
 docker network create app-network # jeśli wcześniej sieć app-network nie była utworzona
 npm install # tworzy package-lock.json i node_modules
 
-docker build -t dawidd288556/backend:v2 ./backend
+docker build -t dawidd288556/backend:v2  --build-arg IMAGE_VERSION=v1 ./backend
 docker tag dawidd288556/backend:v2 dawidd288556/backend:latest
 docker push dawidd288556/backend:v2
 docker push dawidd288556/backend:latest
 
-docker build -t dawidd288556/frontend:v3 ./frontend
+docker build -t dawidd288556/frontend:v3  --build-arg IMAGE_VERSION=v1 ./frontend
 docker tag dawidd288556/frontend:v3 dawidd288556/frontend:latest
 docker push dawidd288556/frontend:v3
 docker push dawidd288556/frontend:latest
