@@ -1,0 +1,53 @@
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rm -f backend-5-2
+backend-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rm -f nginx-5-2
+nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rmi dawidd288556/product-dashboard-backend:v1
+Untagged: dawidd288556/product-dashboard-backend:v1
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rmi dawidd288556/product-dashboard-frontend:v1
+Untagged: dawidd288556/product-dashboard-frontend:v1
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rmi dawidd288556/product-dashboard-backend:latest
+Untagged: dawidd288556/product-dashboard-backend:latest
+Deleted: sha256:0157493512406ec08571357c548d23ac42a29eea663eccad2be15794afa5218a
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rmi dawidd288556/product-dashboard-frontend:latest
+Untagged: dawidd288556/product-dashboard-frontend:latest
+Deleted: sha256:8a025ae473e8ebd2cd3da7541291821da95387a307d6c9982c94ebb4c5e430d8
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker pull dawidd288556/product-dashboard-backend:v1
+v1: Pulling from dawidd288556/product-dashboard-backend
+87c25e836e04: Download complete
+37023fe192cc: Pull complete
+69e2245479ff: Pull complete
+260e8c47a597: Pull complete
+239084bac26e: Pull complete
+Digest: sha256:0157493512406ec08571357c548d23ac42a29eea663eccad2be15794afa5218a
+Status: Downloaded newer image for dawidd288556/product-dashboard-backend:v1
+docker.io/dawidd288556/product-dashboard-backend:v1
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker pull dawidd288556/product-dashboard-frontend:v1
+v1: Pulling from dawidd288556/product-dashboard-frontend
+139a1faed413: Download complete
+b66f1c397c7f: Pull complete
+ff84f9b39d06: Pull complete
+Digest: sha256:8a025ae473e8ebd2cd3da7541291821da95387a307d6c9982c94ebb4c5e430d8
+Status: Downloaded newer image for dawidd288556/product-dashboard-frontend:v1
+docker.io/dawidd288556/product-dashboard-frontend:v1
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker run -d --name backend-5-2 --network back-net -e INSTANCE_ID=api-1 -v items-data:/data dawidd288556/product-dashboard-backend:v1
+fba3f81acfcf9b80550ecf2d333a0643c3661ef4d0c0eb94748add77b7fe3165
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker run -d --name nginx-5-2 --network front-net -p 80:80 dawidd288556/product-dashboard-frontend:v1
+7a9b26537decf96a3499f5fb6d0ed652b5108a6e8dad24a30f605d2a10a1a2ce
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker network connect back-net nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl http://localhost/api/items
+[{"id":"c58784b1-40c7-42c7-ad3d-d38ce9917ea9","name":"test1"},{"id":"cb194881-f569-4795-89ec-9e7cea080746","name":"test2"}]
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl http://localhost/api/stats
+{"count":2,"instance":"api-1"}
+C:\Users\Laptop1\Desktop\studia\devops\5.2>

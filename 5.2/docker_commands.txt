@@ -1,0 +1,33 @@
+npm install # jeśli wcześniej nie było użyte (tworzy package-lock.json i node_modules)
+
+docker network create front-net # jeśli wcześniej sieć nie była utworzona
+docker network create back-net
+
+docker volume create items-data # jeśli wcześniej volume nie było utworzone
+
+docker build -t dawidd288556/product-dashboard-backend:v1 --build-arg IMAGE_VERSION=v1 ./backend
+docker tag dawidd288556/product-dashboard-backend:v1 dawidd288556/product-dashboard-backend:latest
+docker push dawidd288556/product-dashboard-backend:v1
+docker push dawidd288556/product-dashboard-backend:latest
+
+docker build -t dawidd288556/product-dashboard-frontend:v1 --build-arg IMAGE_VERSION=v1 ./frontend
+docker tag dawidd288556/product-dashboard-frontend:v1 dawidd288556/product-dashboard-frontend:latest
+docker push dawidd288556/product-dashboard-frontend:v1
+docker push dawidd288556/product-dashboard-frontend:latest
+
+docker rmi dawidd288556/product-dashboard-backend:v1
+docker rmi dawidd288556/product-dashboard-backend:latest
+docker rmi dawidd288556/product-dashboard-frontend:v1
+docker rmi dawidd288556/product-dashboard-frontend:latest
+
+docker pull dawidd288556/product-dashboard-backend:v1
+docker pull dawidd288556/product-dashboard-backend:latest
+docker pull dawidd288556/product-dashboard-frontend:v1
+docker pull dawidd288556/product-dashboard-frontend:latest
+
+docker run -d --name backend-5-2 --network back-net -e INSTANCE_ID=api-1 -v items-data:/data dawidd288556/product-dashboard-backend:v1
+docker run -d --name nginx-5-2 --network front-net -p 80:80 dawidd288556/product-dashboard-frontend:v1 && docker network connect back-net nginx-5-2
+
+curl http://localhost/api/items
+curl -X POST http://localhost/api/items -H "Content-Type: application/json" -d "{\"name\":\"test1\"}"
+curl http://localhost/api/items

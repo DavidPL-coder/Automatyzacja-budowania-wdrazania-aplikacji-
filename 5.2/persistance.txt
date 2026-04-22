@@ -1,0 +1,31 @@
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker run -d --name backend-5-2 --network back-net -e INSTANCE_ID=api-1 -v items-data:/data dawidd288556/product-dashboard-backend:v1
+815767d49ef399dc30f1760772881cf03487ccce12ff64516255f9f9189653b0
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker run -d --name nginx-5-2 --network front-net -p 80:80 dawidd288556/product-dashboard-frontend:v1
+b2c9239b0825518f2e1e0cf0481979583abb9cb8f952095d3d2458c148fa289c
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker network connect back-net nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl http://localhost/api/items
+[]
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl -X POST http://localhost/api/items -H "Content-Type: application/json" -d "{\"name\":\"test1\"}"
+{"id":"c58784b1-40c7-42c7-ad3d-d38ce9917ea9","name":"test1"}
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl -X POST http://localhost/api/items -H "Content-Type: application/json" -d "{\"name\":\"test2\"}"
+{"id":"cb194881-f569-4795-89ec-9e7cea080746","name":"test2"}
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl http://localhost/api/items
+[{"id":"c58784b1-40c7-42c7-ad3d-d38ce9917ea9","name":"test1"},{"id":"cb194881-f569-4795-89ec-9e7cea080746","name":"test2"}]
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker stop nginx-5-2
+nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker rm -f backend-5-2
+backend-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker run -d --name backend-5-2 --network back-net -e INSTANCE_ID=api-1 -v items-data:/data dawidd288556/product-dashboard-backend:v1
+5861dcb5316635fbabb255829f0135c7c9ba17d7535cec2f5459854b5d09f4ff
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker start nginx-5-2
+nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl http://localhost/api/items
+[{"id":"c58784b1-40c7-42c7-ad3d-d38ce9917ea9","name":"test1"},{"id":"cb194881-f569-4795-89ec-9e7cea080746","name":"test2"}]
+C:\Users\Laptop1\Desktop\studia\devops\5.2>

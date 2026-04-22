@@ -1,0 +1,12 @@
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker ps
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED         STATUS         PORTS                                 NAMES
+5861dcb53166   dawidd288556/product-dashboard-backend:v1    "docker-entrypoint.s…"   3 minutes ago   Up 2 minutes   3000/tcp                              backend-5-2
+b2c9239b0825   dawidd288556/product-dashboard-frontend:v1   "/docker-entrypoint.…"   5 minutes ago   Up 2 minutes   0.0.0.0:80->80/tcp, [::]:80->80/tcp   nginx-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>curl backend-5-2:3000
+curl: (6) Could not resolve host: backend-5-2
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>ping backend-5-2
+Ping request could not find host backend-5-2. Please check the name and try again.
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>

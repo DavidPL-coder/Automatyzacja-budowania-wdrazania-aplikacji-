@@ -1,0 +1,30 @@
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker push dawidd288556/product-dashboard-backend:v1
+The push refers to repository [docker.io/dawidd288556/product-dashboard-backend]
+69e2245479ff: Layer already exists
+ff1a54c111fd: Layer already exists
+260e8c47a597: Layer already exists
+d7f6aca05b78: Layer already exists
+62e0e1181d88: Layer already exists
+37023fe192cc: Layer already exists
+87c25e836e04: Already exists
+c7734204880f: Layer already exists
+589002ba0eae: Layer already exists
+239084bac26e: Layer already exists
+v1: digest: sha256:0157493512406ec08571357c548d23ac42a29eea663eccad2be15794afa5218a size: 856
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>docker push dawidd288556/product-dashboard-frontend:v1
+The push refers to repository [docker.io/dawidd288556/product-dashboard-frontend]
+781ff50d2644: Layer already exists
+453da7dbc73e: Layer already exists
+6a0ac1617861: Layer already exists
+aee4e54b3865: Layer already exists
+ff84f9b39d06: Layer already exists
+612c0c1df4c5: Layer already exists
+139a1faed413: Already exists
+b66f1c397c7f: Layer already exists
+82736a35d0e7: Layer already exists
+583599bb7d38: Layer already exists
+4a8b0b2a5b19: Layer already exists
+v1: digest: sha256:8a025ae473e8ebd2cd3da7541291821da95387a307d6c9982c94ebb4c5e430d8 size: 856
+
+C:\Users\Laptop1\Desktop\studia\devops\5.2>
