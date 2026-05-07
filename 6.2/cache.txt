@@ -1,0 +1,7 @@
+C:\Users\Laptop1\Desktop\studia\devops\6.2>curl http://localhost/api/items
+[{"id":1,"name":"test1","price":"3.55"}]
+C:\Users\Laptop1\Desktop\studia\devops\6.2>curl http://localhost/api/items
+[{"id":1,"name":"test1","price":"3.55"}]
+C:\Users\Laptop1\Desktop\studia\devops\6.2>curl http://localhost/api/stats
+{"count":1,"cache_hits":2}
+C:\Users\Laptop1\Desktop\studia\devops\6.2>

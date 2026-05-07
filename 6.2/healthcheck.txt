@@ -1,0 +1,18 @@
+C:\Users\Laptop1\Desktop\studia\devops\6.2>docker compose up -d
+[+] up 7/7
+ ✔ Network 62_back-net   Created                                                                                                                           0.4ss
+ ✔ Network 62_front-net  Created                                                                                                                           0.4ss
+ ✔ Volume 62_pg-data     Created                                                                                                                           0.1ss
+ ✔ Container cache       Healthy                                                                                                                           14.8s
+ ✔ Container db          Healthy                                                                                                                           15.3s
+ ✔ Container backend-6-2 Created                                                                                                                           1.6ss
+ ✔ Container nginx-6-2   Created                                                                                                                           2.0ss
+
+C:\Users\Laptop1\Desktop\studia\devops\6.2>curl http://localhost/api/items
+[]
+C:\Users\Laptop1\Desktop\studia\devops\6.2>docker compose ps
+NAME          IMAGE                                        COMMAND                  SERVICE       CREATED         STATUS                   PORTS
+backend-6-2   dawidd288556/product-dashboard-backend:v2    "docker-entrypoint.s…"   backend-6-2   2 minutes ago   Up 2 minutes             3000/tcp
+cache         redis:7-alpine                               "docker-entrypoint.s…"   cache         2 minutes ago   Up 2 minutes (healthy)   6379/tcp
+db            postgres:16-alpine                           "docker-entrypoint.s…"   db            2 minutes ago   Up 2 minutes (healthy)   5432/tcp
+nginx-6-2     dawidd288556/product-dashboard-frontend:v2   "/docker-entrypoint.…"   nginx-6-2     2 minutes ago   Up 2 minutes             0.0.0.0:80->80/tcp, [::]:80->80/tcp

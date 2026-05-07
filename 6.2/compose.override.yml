@@ -1,0 +1,9 @@
+services:
+  backend-6-2:
+    container_name: backend-6-2
+    volumes:
+      - ./backend:/app
+    environment:
+      NODE_ENV: development
+      DEBUG: 1
+    command: node --watch server.js

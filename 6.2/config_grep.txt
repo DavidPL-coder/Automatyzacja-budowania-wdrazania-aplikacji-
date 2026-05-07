@@ -1,0 +1,64 @@
+WSL:
+dawid@DESKTOP-4NETUOQ:/mnt/c/Users/Laptop1/Desktop/studia/devops/6.2$ docker compose -f compose.yml -f compose.override.yml config | grep -A5 volumes
+    volumes:
+      - type: bind
+        source: /mnt/c/Users/Laptop1/Desktop/studia/devops/6.2/backend
+        target: /app
+        bind: {}
+  cache:
+--
+    volumes:
+      - type: volume
+        source: pg-data
+        target: /var/lib/postgresql/data
+        volume: {}
+  nginx-6-2:
+--
+volumes:
+  pg-data:
+    name: 62_pg-data
+
+dawid@DESKTOP-4NETUOQ:/mnt/c/Users/Laptop1/Desktop/studia/devops/6.2$ docker compose -f compose.yml config | grep -A5 volumes
+    volumes:
+      - type: volume
+        source: pg-data
+        target: /var/lib/postgresql/data
+        volume: {}
+  nginx-6-2:
+--
+volumes:
+  pg-data:
+    name: 62_pg-data
+
+Powershell:
+PS C:\Users\Laptop1\Desktop\studia\devops\6.2> docker compose -f compose.yml -f compose.override.yml config | Select-String "volumes" -Context 0,5
+
+>     volumes:
+        - type: bind
+          source: C:\Users\Laptop1\Desktop\studia\devops\6.2\backend
+          target: /app
+          bind: {}
+    cache:
+>     volumes:
+        - type: volume
+          source: pg-data
+          target: /var/lib/postgresql/data
+          volume: {}
+    nginx-6-2:
+> volumes:
+    pg-data:
+      name: 62_pg-data
+
+
+PS C:\Users\Laptop1\Desktop\studia\devops\6.2> docker compose -f compose.yml config | Select-String "volumes" -Context 0,5
+
+>     volumes:
+        - type: volume
+          source: pg-data
+          target: /var/lib/postgresql/data
+          volume: {}
+    nginx-6-2:
+> volumes:
+    pg-data:
+      name: 62_pg-data
+

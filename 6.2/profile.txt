@@ -1,0 +1,13 @@
+C:\Users\Laptop1\Desktop\studia\devops\6.2>docker compose --profile tools run --rm db-seed
+[+]  1/1t 1/11
+ ✔ Container db Running                                                                                                                                     0.0s
+Container db Waiting 
+Container db Healthy 
+Container 62-db-seed-run-fe089da8acbf Creating 
+Container 62-db-seed-run-fe089da8acbf Created 
+INSERT 0 3
+failed to resize tty, using default size
+
+C:\Users\Laptop1\Desktop\studia\devops\6.2>curl http://localhost/api/items
+[{"id":1,"name":"test1","price":"3.55"},{"id":34,"name":"Widget","price":"9.99"},{"id":35,"name":"Gadget","price":"24.99"},{"id":36,"name":"Doohickey","price":"4.49"}]
+C:\Users\Laptop1\Desktop\studia\devops\6.2>
